@@ -49,4 +49,34 @@ Ary[1] = {"a","b"}
 PriAll(Ary)
 
 
+---test 200 local in one func ----
+print("-----test 200 local in one func-----")
+function TestLocalNum()
+   local loctable = {}
+   
+   for i=0,200,1 do
+      print("local " .. "a" .. i .. "=" .. i) -- 输出粘贴可测试会出错
+   end 
+return loctable
+end
+
+--TestLocalNum()  
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
