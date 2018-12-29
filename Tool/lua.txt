@@ -9,7 +9,6 @@ local test2 = 2
 ... --to 199
 return Class
 则会报出main function has more than 200 local variables的错误
---测试 确实要出错
 
 2 模块级的local变量暂无限制，若是选额使用模块级的local变量去存储模块数据，
 在热更新处理会麻烦，所以模块级的变量最好只用于引用别的模块为妙

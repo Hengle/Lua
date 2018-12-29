@@ -1,7 +1,9 @@
 
 package.path = package.path .. ";E:/Book/lua/Study/Lua/?.lua"
 
-local function printall(f)
+PA = {}
+local _PA = PA
+function _PA:showall(f)
 print("table--" , v)
 for i,v in pairs(f) do
    if type(v) == "table" then
@@ -15,6 +17,11 @@ end
 end
 
 
+print(PA.showall)
+
+function printall(f)
+   PA:showall(f)
+end
 -- class
 local p = {"p",2,3}
 print("--class--")
@@ -44,5 +51,28 @@ print("---class--new--test----")
 mbase = class("mbase")
 printall(mbase)
 mchid = class("mchid",mbase.New()) -- 实际就是调用闭包，来给这个类用元表的方式clone为基类
+
+
+
+print("------------------new new----")
+-- m = class.New()      -- error:attempt to index global 'class' (a function value)
+-- m = class.New("m",n)
+
+m = class("m")
+n = class("n",m)
+print("------------------m----")
+printall(m)
+print("------------------n----")
+printall(n)
+
+
+
+
+
+
+
+
+
+
 
 
