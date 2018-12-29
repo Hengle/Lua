@@ -49,7 +49,7 @@ end
 --16.1
 print("--16.1--")
 
-package.path = package.path .. ";E:/Book/lua/Study/?.lua"
+package.path = package.path .. ";E:/Book/lua/Study/Lua/?.lua"
 require("Inherit") -- 编译并执行
 
 SpecialAccount = BankAccount:new()

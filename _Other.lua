@@ -61,7 +61,16 @@ return loctable
 end
 
 --TestLocalNum()  
+B = {1,2,x="4",3,4,5,x="2"}
+print(#B)
+print(table.getn(B))
+print(B.x) -- 以后面的为准
 
+
+--
+print("-----test word-----")
+word = "djlajlfa"
+print(word[2])
    
 
 
