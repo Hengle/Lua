@@ -30,3 +30,58 @@ print(co2(1,2,3))--co 1,2,3  + --after yield --  调用函数重新从print函数开始执行
 
 
 -- 如果不需要检测coroutine的状态，wrap比较方便,调用也方便
+
+
+print("---Wrap---06---")
+
+a ={}
+
+
+function CreateWrap()
+  a.func = coroutine.wrap(CallNumber)
+end
+
+
+function CallNumber()
+   print("-----start wrap-----")
+   local i = 0
+   for i=0,10,1 do
+      print(ShowNumber(i))
+	  coroutine.yield()
+   end
+   print("----end wrap -----")
+end
+
+
+function ShowNumber(num)
+   local a,b = 0,1
+   while num>0 do
+       a,b = b,a+b
+	   num = num -1
+   end
+   return a,b
+end
+
+print("-Print--Wrap---06---")
+CreateWrap()
+for j=0,10,1 do
+  a.func()
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
