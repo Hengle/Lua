@@ -6,7 +6,7 @@ print("-- 9.1 --")
 -- Lua的所有协同函数存放于coroutine table中
 -- 协同有三个状态：挂起态（suspended）、运行态（running）、停止态（dead）
 
--- create的参数是匿名函数
+-- create的参数是匿名函数,创建出来是默认挂起的状态
 co = coroutine.create(function ()
     print("hi")
 end)
@@ -14,7 +14,7 @@ print(co)     --> thread: 0x8071d98
 
 
 -- status检查协同的状态
-print(coroutine.status(co))
+print(coroutine.status(co)) -->suspended
 
 -- 函数coroutine.resume使协同程序由挂起状态变为运行态
 coroutine.resume(co)            --> hi
@@ -35,7 +35,7 @@ end)
 
 print(coroutine.status(co)) -- suspended
 
-coroutine.resume(co)            --> co   1
+coroutine.resume(co)            --> co   1,使用了yield来挂起
 print(coroutine.status(co))     --> suspended
 coroutine.resume(co)            --> co   2
 print(coroutine.status(co))     --> suspended
@@ -68,12 +68,17 @@ co = coroutine.create (function ()
     print("co", coroutine.yield())
 end)
 
-print(coroutine.status(co))
-coroutine.resume(co)   
-print(coroutine.status(co))         
-coroutine.resume(co, 4, 5,"rerer")      --> co  4  5 -- 4,5就是resume传递给yield的参数
+print(coroutine.status(co)) --挂起
+coroutine.resume(co)   --运行到print挂起
+print(coroutine.status(co))   --挂起      
+coroutine.resume(co, 4, 5,"rerer")      --> 运行完print函数,co  4  5 -- 4,5就是resume传递给yield的参数,注意输出了co和yield传递的参数后,程序就结束了
 print(coroutine.status(co))
 
+-- 以上再重点执行顺序
+-- 1 coroutine.create后则挂起状态
+-- 2 第一个resume执行到print的第二个参数进入挂起状态，这个时候挂起在print函数，下次进入会重新执行print函数
+-- 3 第二个resume传递了参数给yield，继续执行print，并完成了print函数
+-- 4 执行完后进入dead状态
 
 --最后一个例子，协同代码结束时的返回值，也会传给resume：
 print("----------------4 end parameter can pass to resume ------------------")
@@ -83,6 +88,9 @@ co = coroutine.create(function ()
 end)
 
 print(coroutine.resume(co))     --> true  6  7
+
+-- 所以综上所述：resume可以传递参数给yield，也可以在函数结束的时候把参数传递给resume；注意resume的第一个参数是true(调用成功)或false
+
 
 
 -- 9.2 管道和过滤器

@@ -1,0 +1,96 @@
+
+
+------------------------环境设置----------------------
+
+1 运行实例场景需要：Appconst.cs -- DebugMode设置为true,这样才能加载System.global.lua(内有wrap.lua以及unity的注册类)
+
+2 wrap内就是去反射优先导入的类的类型
+
+------------------------Example----------------------
+1 lua_State提供了执行lua代码的环境，global_State管理内存
+
+2 因为lua的代码是以普通assetBundle资源加载的,因此代码的逻辑也是实时可以更改的,这就是lua强大之处
+
+------------------------E1------------------------------
+1 LuaState:宿主语言在加载和执行Lua脚本时，做的第一件事情就是创建并初始化Lua虚拟机。
+
+2 lua_State主要是管理一个lua虚拟机的执行环境, 一个lua虚拟机可以有多个执行环境。
+
+------------------------E2------------------------------
+1 反射调用方式是不推荐使用的，因为效率慢，推荐的是使用wrap的去反射模式
+
+2 反射：反射使用Assembly定义和加载程序集，加载在程序集清单中列出模块，以及从此程序集中查找类型并创建该类型的实例
+
+2.1 反射用到的命名空间:System.Reflection / System.Type / System.Reflection.Assembly
+
+2.2 反射用到的主要类：
+     System.Type 类－－通过这个类可以访问任何给定数据类型的信息。
+     System.Reflection.Assembly类－－它可以用于访问给定程序集的信息，或者把这个程序集加载到程序中。
+
+3 去反射：把所有的c#类的public成员变量、成员函数，都导出到一个相对应的Wrap类中，而这些成员函数通过特殊的标记，
+   映射到lua的虚拟机中，当在lua中调用相对应的函数时候，直接调用影射进去的c# wrap函数，然后再调用到实际的c#类，完成调用过程
+
+4 load_xxx、import_type，例子中的这些接口都是反射
+
+5 在ulua时代，选择使用LuaState的话，就是纯粹的反射模式；
+   如果想用cstolua的wrap去反射模式，蒙哥为了不影响之前的代码结构，新建了LuaScriptMgr类，因此推荐选择LuaScriptMgr mgr = new LuaScriptMgr
+
+6 去反射弊端:提前需要把c#的类导入到Lua中，参考wrap.lua的import各种unity的类
+
+7 所以6的类没有导入，就可以用反射调用临时的wrap类进行使用；当大版本更新的时再将此类加入到wrap中；这种机率很小不代表不存在
+
+8 例子
+
+8.1 反射:   CreateGameObject1.cs -- 1 LuaState l = new LuaState() 2 l.DoString(文件)
+8.2 非反射:CreateGameObject2.cs--  1 LuaScriptMgr l = new .. 2 l.Start()//里面加载默认system下的文件 3 l.Dostring(文件)
+
+注意:LuaScriptMgr.lua 就是LuaState
+
+------------------------E3------------------------------
+
+1 LuaState对象+[] :是全局表_G内访问全局变量，加载lua文件内定义的全局变量用这种方式来访问
+
+2 以上1的访问方式全局变量通常来访问第一类数值或者是表
+
+3 去反射主要的区别就是使用wrap.lua的类，不需要再用反射(luanet.import_type)去查询类名
+
+------------------------E4------------------------------
+
+加载文件的绝对路径
+
+------------------------E5------------------------------  
+
+1 LuaScriptMgr会缓存函数，接口LuaFunction func = GetLuaFunction(函数名字),调用分两种
+1.1 有gc: object[] r = func.Call(参数列表); r[0]栈顶是结果
+1.2 无gc: int num = CallFunc();参考代码，需要有栈的操作
+无gc的调用利用了beginPcall和EndPcall,其间操作函数+参数+返回值在栈内的调用
+
+2 LuaState使用接口LuaFunction f = GetFunction(函数名字)
+2.1 object[] r = f.Call(参数); 
+
+------------------------E6------------------------------  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
