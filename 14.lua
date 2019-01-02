@@ -1,4 +1,7 @@
 
+-- 参看Package.lua
+
+
 
 -- lua 用一个名为environment的表来保存所有的全局变量
 -- lua 将环境本身存储在一个全局变量_G中，_G._G等于G
@@ -66,7 +69,7 @@ end
 -- 不管什么时候metamethod被调用的时候，他会检查这张辅助表看变量是否已经存在
 
 
-package.path = package.path .. ";E:/__Lua/Study/?.lua"
+package.path = package.path .. ";E:/Book/lua/Study/Lua/?.lua"
 require("Globaltable") -- 编译并执行
 
 declare "b"
