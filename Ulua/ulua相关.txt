@@ -6,6 +6,8 @@
 
 ------------------------环境设置----------------------
 
+0 点击Lua -- Gen Lua Wrap File
+
 1 运行实例场景需要：Appconst.cs -- DebugMode设置为true,这样才能加载System.global.lua(内有wrap.lua以及unity的注册类)
 
 2 wrap内就是去反射优先导入的类的类型
