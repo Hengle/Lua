@@ -1,4 +1,42 @@
 
+ 
+ 
+
+a = function ()
+end
+
+print(a)
+ 
+if type(a) == "function" then
+  print("---bobbos---")
+end
+
+--[[
+tt = {1,2,3,4,5}
+local m = 100
+for i= 1,10,1 do
+ 
+ table.insert(tt,i,m)
+ m = m+1
+end
+
+for i,v in pairs(tt) do
+  print(i,v)
+end
+--]]
+
+
+--[[
+print("------Test-------");
+q = {44,57}
+p = {1,2,3}
+p.att = q
+
+m = 12.3
+print(math.ceil(m))
+print(math.floor(m))
+--]]
+
 
 
 -- dofile 是用来加载文件并执行的
