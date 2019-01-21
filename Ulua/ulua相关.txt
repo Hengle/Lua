@@ -96,7 +96,16 @@
 
 4 LuaMethod，和LuaField类似，都需要传递参数名；LuaField就像c#的get和set，luaField需要传递两个函数调用的参数名
 
-5   
+5 注释
+5.1  encoder函数：local pb_data = msg:SerializeToString() 生成的（pb_data）实际上是一个c语言的char*结果值
+5.2  这个值传递给c#可以用LuaStringBuffer类实例接收,里面的buffer变量就是一个c#的byte[],这样就可以通过socket
+发送给服务器端
+5.3  反过来从服务器端接收到的byte[]，通过创建一个LuaStringBuffer(byte[])并且传递给Lua，然后再调用
+lua的msg:ParseFromString(TestProtol.data)将protobuf的结构反序列化成lua的table，完成解码操作
+
+------------------------E9------------------------------  
+
+1 
 
 
 
