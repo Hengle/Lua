@@ -1,5 +1,20 @@
 
+a = {}
+a[1] = 22
+a[234] = 3
+a[222] = 4
+a[2] = 8
 
+table.sort(a)
+local siz = #a
+print("--" .. siz .. "--")
+for i,v in ipairs(a) do
+ print(i,v)
+end
+
+
+
+--[[
 function printtb(tb)
 
   local s = ""
@@ -44,3 +59,5 @@ print(par[1].q)
 print("--qulity--")
 table.sort(par, cmp)
 printtb(par)
+
+--]]
