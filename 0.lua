@@ -1,4 +1,44 @@
 
+local i1 = -1
+
+local i2 = i1 == -1 and false or true
+
+print(i2)
+
+
+a = {0,1,2,3}
+
+
+
+for i,v in pairs(a) do
+
+   if v == 0 then
+   table.remove(a,i)
+   end
+
+end
+
+
+for i,v in pairs(a) do
+
+print(i,v) 
+
+end
+
+--[[
+a = 10
+
+b = math.modf(a/3)
+c = math.fmod(a,3)
+
+print(a,b,c)
+
+for i=2,10,2 do
+print (i)
+end
+--]]
+
+--[[
 a = {}
 a[1] = 22
 a[234] = 3
@@ -12,7 +52,7 @@ for i,v in ipairs(a) do
  print(i,v)
 end
 
-
+--]]
 
 --[[
 function printtb(tb)
