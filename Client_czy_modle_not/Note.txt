@@ -1,0 +1,21 @@
+
+1 生成快照
+
+1.1 RenderTexture 获取屏幕渲染当前帧
+
+1.2 Texture2d,把texture的每个像素渲染到texture2d中，1)读取像素缓冲区texture.readpixels;2）设置tex.apply(),
+
+1.3 public void ReadPixels(Rect source, int destX, int destY, bool recalculateMipMaps = true); --读取屏幕的像素值，destX，destY结尾的读取的值
+source:Rectangular region of the view to read from. Pixels are read from current render target.
+
+texture.ReadPixels(new Rect(0, 0, Screen.width, Screen.height), 0, 0, false); --官网例子，第二和第三参数是最后的像素，0表示按照rect的大小读取
+
+1.4 public void Apply(bool updateMipmaps = true, bool makeNoLongerReadable = false); --把设置的像素值渲染到最新
+updateMipmaps:When set to true, mipmap levels are recalculated.
+makeNoLongerReadable:When set to true, system memory copy of a texture is released.
+
+1.5 Camera.Render() 强制渲染相机当前帧并获取texture
+
+1.6 RenderTexuture.active -- Currently active render texture.
+
+1.7 注意uv坐标是，左下角（0，0）右上角（1，1）

@@ -1,0 +1,23 @@
+function CameraController:GetShotScreenTex()
+	local width = Screen.width
+	local height = Screen.height
+	local rt = UnityEngine.RenderTexture.New(width,height,24,UnityEngine.RenderTextureFormat.ARGB32);
+	local camera = Camera.main;
+
+	camera.targetTexture = rt;
+	camera:Render(); -- 强制摄像机渲染当前帧，能得到屏幕当前texture
+
+
+	UnityEngine.RenderTexture.active = rt; --当前的渲染帧（可注释不影响）
+
+	local texture = UnityEngine.Texture2D.New(width,height,UnityEngine.TextureFormat.RGB24,false);
+	local rect = Rect.New(0,0,width,height);
+	texture:ReadPixels(rect, 0, 0); -- 相当于tex.ReadPixels(new Rect(0, 0, rt.width, rt.height), 0, 0);
+	texture:Apply();
+
+	camera.targetTexture = nil;
+	--camera.clearFlags = CameraClearFlags.Skybox
+	UnityEngine.RenderTexture.active = nil
+	GameObject.Destroy(rt);
+	return texture;
+end
