@@ -1,4 +1,12 @@
 
+
+for i=1,2 do
+print(i)
+end
+
+
+
+-----
 local i1 = -1
 
 local i2 = i1 == -1 and false or true

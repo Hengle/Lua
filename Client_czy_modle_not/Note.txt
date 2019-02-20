@@ -19,3 +19,8 @@ makeNoLongerReadable:When set to true, system memory copy of a texture is releas
 1.6 RenderTexuture.active -- Currently active render texture.
 
 1.7 注意uv坐标是，左下角（0，0）右上角（1，1）
+
+
+------------------------------------------------------------------
+1 texture 变灰 只需要调整color tin 为000
+2 Unlit - Transparent Color Gray 直接替换texture的shader
