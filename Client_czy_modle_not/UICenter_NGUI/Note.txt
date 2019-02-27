@@ -1,0 +1,20 @@
+
+NGUI-UICenterOnScalle
+
+1 先计算panel的center在世界坐标中的位置
+  Vector3[] corners = mScrollView.panel.worldCorners;
+  Vector3 panelCenter = (corners[2] + corners[0]) * 0.5f;
+  mPanelCenter = panelCenter; //中心位置
+
+2 确定一个相对的值
+  float cellWidth = loop.cellWidth
+  float delta = cellWidth * scaleRange
+  mDelta = delta * delta  // 相对的值
+
+3 update() //每一帧刷新中心位置，若有新的则回调object
+
+3.1 Vector3 pickingPoint = trans.worldToLocalMatrix.MultiplyPoint(mPanelCenter); //此loopgrid的中点
+3.2 float sqrDist = Vector3.SqrMagnitude(t.localPosition - pickingPoint);//此item的位置到中心点的距离
+3.3 float value = Mathf.Clamp01(sqrDist / mDelta); //相对距离 = 到中心距离/绝对大的值
+3.4 float scale = Mathf.Lerp(centerScale, 1.0f, value);//
+ 

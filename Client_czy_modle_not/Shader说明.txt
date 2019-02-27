@@ -1,0 +1,7 @@
+
+
+1 Unlit - Transparent Colored.shader texutrue调节color的灰度值就可以灰显
+
+2 Unlit - Transparent Color Gray.shader 需要替换
+
+3 Unlit - Transparent Colored.shader 和1一样

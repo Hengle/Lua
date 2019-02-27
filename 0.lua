@@ -1,7 +1,7 @@
 
-for i=1,10,1 do
-local j = math.random(1,5)
-print (j)
+for i=1,30,1 do
+local j = math.random(0,9)
+print (j,1,i)
 end
 
 
