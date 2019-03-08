@@ -58,7 +58,8 @@ Equals会一个细胞接一个细胞得比较，而GetHashCode可以通过判断性别，长相，声音…… 
 
 4 LevelLogicController 关卡控制器
 
-4.1 
+5 HashSet<T>类为 UnionWith方法：修改当前 HashSet<T> 对象以使其包含存在于该对象中、指定集合中或两者中的所有元素。
+   即是：xx.UnionWith(other ); other里面有xx没有的元素也添加进xx容器内
 
 
 
