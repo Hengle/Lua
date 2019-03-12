@@ -7,18 +7,24 @@ using UnityEngine;
 public class LgcLevel
 {
 
+    #region public data
+    public const int Col_Max = 9;
+
+    public const int Row_Max = 9;
+    #endregion
+
+
+
 
     #region private data
 
-    private int TargetScore { get; set; }
+    private int ChainScore { get; set; } //每一个链对应的score
+
+    private int TargetScore { get; set; } // 目标score
 
     private int MaxMumMove { get; set; }
 
     private int ComboMultiplier { get; set; }
-
-    private const int Col_Max = 9;
-
-    private const int Row_Max = 9;
 
     private const int Min_Chain_Len = 3;
 
@@ -28,6 +34,7 @@ public class LgcLevel
 
     private HashSet<LgcSwap> PossibleSwapSet;
     #endregion
+
 
 
 
@@ -84,7 +91,7 @@ public class LgcLevel
     }
     #endregion
 
-    #region private create
+    #region private function
 
     private HashSet<ElimateUnit> CreateAllElimateUnit()
     {
@@ -157,6 +164,17 @@ public class LgcLevel
         for (int i = row + 1; i < Row_Max && ArrayUnit[col, i] != null && ArrayUnit[col, i].Type == unittype; i++, vertlen++) ;
         return (vertlen >= Min_Chain_Len);
     }
+
+    //计算链组合的分或结果
+    private void CaculateSore(HashSet<Chain> chains)
+    {
+        foreach(Chain v in chains)
+        {
+            v.score = ChainScore * v.Animals().Count * ComboMultiplier;
+            ++ComboMultiplier;
+        }
+    }
+    
     #endregion
 
 
@@ -272,6 +290,8 @@ public class LgcLevel
         return ArrayTile[col, row];
     }
 
+
+    //每一次后需要重置Combom的基数
     public void SetComboMultiplier(int val = 1)
     {
         ComboMultiplier = val;
@@ -425,7 +445,45 @@ public class LgcLevel
         return unitColumnlis;
     }
 
+    //
+    public List<List<ElimateUnit>> TopElimateUnits()
+    {
+        List<List<ElimateUnit>> unitColumns = new List<List<ElimateUnit>>();
 
+        ElimateType et = ElimateType.ET_1;
+
+        for(int col = 0; col < Col_Max; col++)
+        {
+            List<ElimateUnit> lis = null;
+
+            for(int row = Row_Max -1; row >=0 && ArrayUnit[col,row] == null; row--)
+            {
+                if(ArrayTile[col,row] != null)
+                {
+                    ElimateType newt;
+                    do { newt = ElimateUnit.RandomType(); }
+                    while (newt == et);
+
+                    //随机的类型
+                    et = newt;
+
+                    //新单元
+                    ElimateUnit unit = CreateElimateUnit(col, row, et);
+
+                    if(lis == null)
+                    {
+                        lis = new List<ElimateUnit>();
+                        unitColumns.Add(lis);
+                    }
+
+                    lis.Add(unit);
+                    
+                }
+            }
+        }
+        return unitColumns;
+
+    }
 
     #endregion 
 }

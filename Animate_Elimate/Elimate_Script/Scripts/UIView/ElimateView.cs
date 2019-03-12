@@ -27,6 +27,33 @@ public class ElimateView : MonoBehaviour
     }
 
 
+    public GameObject ViewIn
+    {
+        get
+        {
+            return objIn;
+        }
+        private set
+        {
+
+        }
+    }
+
+
+    public GameObject ViewOut
+    {
+        get
+        {
+            return objOut;
+        }
+        private set
+        {
+
+        }
+    }
+
+
+
     private void Awake()
     {
         IsSelected = false;

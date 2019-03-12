@@ -6,7 +6,7 @@ public class MonoSingleTon<T> : MonoBehaviour where T : MonoBehaviour
 {
     private static T m_instance;
 
-    public static T Instance
+    public static T Ins
     {
         get
         {
@@ -18,6 +18,8 @@ public class MonoSingleTon<T> : MonoBehaviour where T : MonoBehaviour
     {
         m_instance = this as T;
     }
+
+
 }
 
 

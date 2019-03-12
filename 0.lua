@@ -1,6 +1,17 @@
 
 
 
+
+b = 0 
+c = 1
+
+d = b or c
+f = not 0
+print(f)
+
+print (b<0)
+
+
 --[[
 a = {}
 a[1]={}
