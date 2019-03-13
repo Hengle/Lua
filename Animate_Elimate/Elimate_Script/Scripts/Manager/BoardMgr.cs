@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BoardMgr : MonoSingleTon<SceneMgr>
+public class BoardMgr : MonoSingleTon<BoardMgr>
 {
     #region public data
 
@@ -41,15 +41,15 @@ public class BoardMgr : MonoSingleTon<SceneMgr>
 
     #region 需要整理的部分
 
-    [SerializeField] Transform BoardTransform;
+    private  Transform BoardTransform;
     //单元根节点
-    [SerializeField] Transform ElimateRootTransform;
+    private Transform ElimateRootTransform;
     //底板根节点
-    [SerializeField] Transform TileRootTransform;
+    private Transform TileRootTransform;
     //底板prefab
-    [SerializeField] GameObject TilePrefab;
+    private GameObject TilePrefab;
     //单元prefab
-    [SerializeField] GameObject[] ElimatePrefabs;
+    private List<GameObject> ElimatePrefabs = new List<GameObject>();
 
     #endregion
 
@@ -155,6 +155,20 @@ public class BoardMgr : MonoSingleTon<SceneMgr>
 
 
     #region public function
+    public void Init(Transform boardroot,Transform elimateroot,Transform tileroot,
+        GameObject tileprefab,GameObject[] elimateprefabs)
+    {
+        BoardTransform = boardroot;
+        ElimateRootTransform = elimateroot;
+        TileRootTransform = tileroot;
+        TilePrefab = tileprefab;
+
+        int len = elimateprefabs.Length;
+        for(int i=0;i<len;i++)
+        {
+            ElimatePrefabs.Add(elimateprefabs[i]);
+        }
+    }
 
     public void AddViewsForElimateUnits(ElimateUnit unit)
     {
@@ -176,7 +190,6 @@ public class BoardMgr : MonoSingleTon<SceneMgr>
             .PrependInterval(UnityEngine.Random.Range(0f, 0.5f)
             );
     }
-
 
     public void AddViewsForElimateUnits(HashSet<ElimateUnit> unitset)
     {

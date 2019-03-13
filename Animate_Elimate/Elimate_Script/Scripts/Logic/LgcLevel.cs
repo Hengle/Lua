@@ -292,7 +292,7 @@ public class LgcLevel
 
 
     //每一次后需要重置Combom的基数
-    public void SetComboMultiplier(int val = 1)
+    public void ResetComboMultiplier(int val = 1)
     {
         ComboMultiplier = val;
     }
@@ -407,7 +407,6 @@ public class LgcLevel
         return h_chainset;
     }
 
-
     //空位填补
     public List<List<ElimateUnit>> FillHoles()
     {
@@ -445,7 +444,6 @@ public class LgcLevel
         return unitColumnlis;
     }
 
-    //
     public List<List<ElimateUnit>> TopElimateUnits()
     {
         List<List<ElimateUnit>> unitColumns = new List<List<ElimateUnit>>();
@@ -484,6 +482,24 @@ public class LgcLevel
         return unitColumns;
 
     }
+
+    //重新开局
+    public HashSet<ElimateUnit> Shuffle()
+    {
+        HashSet<ElimateUnit> unitSet;
+
+        do
+        {
+            unitSet = CreateAllElimateUnit();
+
+            FindPossibleSwape();
+        }
+        while (PossibleSwapSet.Count == 0);
+
+        return unitSet;
+    }
+
+
 
     #endregion 
 }

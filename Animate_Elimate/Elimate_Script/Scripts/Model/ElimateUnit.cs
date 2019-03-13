@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class ElimateUnit : MonoBehaviour
+public class ElimateUnit 
 {
     public int Column { get; set; }
 
@@ -13,6 +13,11 @@ public class ElimateUnit : MonoBehaviour
     public ElimateType Type { get; set; }
 
     public ElimateView View { get; set; }
+
+    public ElimateType GetUnitType()
+    {
+        return Type;
+    }
 
     public bool IsSelect
     {
