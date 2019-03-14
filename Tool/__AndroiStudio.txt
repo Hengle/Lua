@@ -1,0 +1,70 @@
+
+---------------------路径------------------------
+
+1  设置sdk：Project Structure -> SDK Location
+
+---------------------JDK-------------------------
+
+1 安装jdk会出现两次安装提示，第一次是安装jdk，第二次是安装jre，建议都安装在java目录下，jre需要重新新建一个空文件夹如果有则新建jdk文件夹
+
+1  https://www.oracle.com ->Java SE Development Kit 8u201->Windows x86
+
+2  安装: jdk 和 jre 需要在java目录下的不同文件夹下，同文件夹会出错；可默认安装路径
+
+3  系统变量: 1)系统变量->新建JAVA_HOME,值是jdk的路径
+
+4  系统变量→寻找 Path 变量→编辑: 2)%JAVA_HOME%\bin;%JAVA_HOME%\jre\bin;
+（注意原来Path的变量值末尾有没有;号，如果没有，先输入；号再输入上面的代码）
+
+5  系统变量→新建 CLASSPATH 变量: .;%JAVA_HOME%\lib;%JAVA_HOME%\lib\tools.jar（注意最前面有一点）
+
+6  测试:java -version (java 和 -version 之间有空格）
+
+---------------------设置字体-------------------------
+
+1 File >> settings >> Appearance & Behavior >> Appearance 
+
+
+---------------------目录结构-------------------------
+
+1  .gradle： 文件夹包含的是 gradle 工具的各个版本。gradle/gradle-wrapper.properties -- distributionUrl可以更改gradle的版本（当不兼容的情况下使用）
+
+2  .idea: 包含了开发所需的各种环境
+
+3   app: 包含了我们要开发的app的所有
+
+3.1） app文件下有一个build.gradle文件，这个文件的设置只对本app有效，而上一层的
+build.gradle对本项目有效。平时需要引用其他的开源库就是在这里面添加的
+
+4   gradle文件夹包含了gradle工具的打包。wrapper的意思就是包装打包
+
+5   .gitignore文件，暂无介绍
+
+6    主目录下的build.gradle这里配置所有模块通用的配置信息，注意与模块下的build.gradle文件区分
+
+7    gradle.properties文件，gradle的相关配置
+
+8    gradlew文件
+
+9    gradlew.bat是windows下的批处理文件
+
+10  hqfwzx.iml文件保存这个模块的相关信息，格式是xml
+
+11  local.properties文件保存android sdk所在的路劲
+
+12  setting.gradle 文件在初始化过程中被执行，一个gradle构建通常包括三个阶段：
+初始化，配置，执行
+
+
+---------------------JAR包-------------------------
+
+1 反编译工具 jd-gui 可查看jar包中的内容
+
+
+
+
+
+
+
+
+

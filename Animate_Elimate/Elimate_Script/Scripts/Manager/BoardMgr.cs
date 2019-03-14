@@ -18,10 +18,10 @@ public class BoardMgr : MonoSingleTon<BoardMgr>
     public Action<LgcSwap> SwipeHandler;
 
     //
-    public float g_fTileWidth = 2.56f;
+    public float g_fTileWidth = 70f;
 
     //
-    public float g_fTileHeight = 2.56f;
+    public float g_fTileHeight = 70f;
 
     #endregion
 
@@ -76,7 +76,8 @@ public class BoardMgr : MonoSingleTon<BoardMgr>
 
     private Vector2 PointForCell(int col,int row)
     {
-        return Vector2.zero;
+        Vector2 pos = new Vector2(col * g_fTileWidth + g_fTileWidth / 2, row * g_fTileHeight + g_fTileHeight / 2);
+        return pos;
     }
 
     //根据鼠标点获取格子的坐标
