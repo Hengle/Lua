@@ -2,16 +2,15 @@
 
 
 
-b = 0 
-c = 1
+a = 1e-5
+b = tonumber(a)
+c_1 = math.pi
+c_2 = math.sin(c_1)
+print(c_1 .. "---" .. c_2 )
 
-d = b or c
-f = not 0
-print(f)
-
-print (b<0)
-
-
+p = 9.1
+p_1 = math.ceil(p)
+print("---" .. p_1)
 --[[
 a = {}
 a[1]={}

@@ -1,0 +1,67 @@
+. LogInfo, LogError 打印不要用..拼接字符串，要用逗号分隔
+    目前还有一些没有修改，全局搜一下集中改掉
+
+. 调试用的LogError提交svn前要注掉
+
+. 打印Log不要太频繁，频繁打印对性能影响很大
+
+. 如果一个table索引操作2次以上，要定义成local变量
+
+. 避免使用用拼接字符串: "xxx" .. 123
+    可以封装接口通过传递参数来避免：func("xxx", 123)
+    
+. 避免使用临时table: local xxx = {}    
+    可以定义成全局变量或缓存起来，注意每次取用时字段要清空
+    
+. 减少调用c(c++,c#)接口获取userdata: gameObject.transform
+
+. 避免使用临时function
+
+. 使用工具定位哪些代码内存申请过多
+
+. 正确使用闭包，避免空指针（对象）或野指针（对象）情况的出现
+  主要是一些callback，如AddTimer, SetMessageHandler等。
+
+. 界面关闭时清理所有相关“资源”，包括callback，timer等。
+
+. 发布手机版后到bugly后台查看报错，已解决的问题要标记掉
+
+. 提交代码前必须每个文件差异比较检查修改是否要提交
+
+. C#中打印Log统一使用以下格式：
+    if (GameLogger.IsEnable) GameLogger.Log("xxx");
+
+. 多分支同时维护时不要漏合代码
+
+. lua到C#传递的字符串做了缓存，如果是只使用一次的字符串要使用不带缓存的接口
+
+. 不要帮别人改bug或提交代码，否则合并版本时很容易漏掉
+
+. php文件编码必须是utf8无BOM的，否则会报错
+
+. 调试手机上的bug的一些高效的技巧
+    . 可以在电脑上输命令"lua 1"（输入target uid）来把D:\reload.lua文件里的内容发送到手机上执行
+    . 可以通过把EngineConfig.xml放到手机files目录来指定Data.bytes的下载路径来让手机强制使用指定的Data.bytes
+    . 可以把手机与电脑连到同一个网段下，使用ZeroBrane Studio工具来远程调试手机上的lua代码
+    . 可以使用adb shell, adb push, adb pull等命令来快速的查看手机文件，与电脑互拷文件等
+    
+. 对于上线后的版本，提交到分支的代码必须通过主管审核
+
+. 程序不要修改策划表格，也不要修改多语言
+
+. lua中遍历csv表格用confpairs，是一个特殊table，用到时才解析
+
+. 自己Build pc版只需要把exe文件放到Client目录下就可以，使用的资源以及脚本等环境和UnityEditor一致
+
+. 自已Build android参见文档
+
+. 如果要修改数据库结构，先在自己的库上修改，提交时代码和sql更新语句一起提交
+
+. 一堆报错时，解决错误优先解决第一个 
+
+. 服务器端full已改为指针，所有用到的地方都要判空
+
+
+
+
+    
