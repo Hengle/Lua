@@ -1,7 +1,18 @@
 
 
+a = {}
+b = 2.333333
+b_2 = math.ceil(b)
+print(b_2)
+
+b_1 = math.floor(b)
+print(b_1)
 
 
+print(a.bb)
+print(a["ccc"])
+
+--[[
 a = 1e-5
 b = tonumber(a)
 c_1 = math.pi
@@ -11,6 +22,8 @@ print(c_1 .. "---" .. c_2 )
 p = 9.1
 p_1 = math.ceil(p)
 print("---" .. p_1)
+
+--]]
 --[[
 a = {}
 a[1]={}
