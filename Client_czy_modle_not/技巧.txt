@@ -3,5 +3,10 @@
 1 math.sin( t * math.pi  * 0.5) 在插值中有先快后慢的效果，优于平滑的效果
 从0-math.pi的曲线上看是比y值先快后慢，所有目标一定是取0.5*math.pi
 
+        self.time = self.time + dt
+        local t = self.time/self.maxTime
+        if t > 1 then t = 1 end  // 最大值需要判定范围为1不然就超过了90度
+        t = math.sin( t * math.pi  * 0.5)
+
 2 1e-5: 这是科学计数法用到的，意思是1*（10的-5）次方,即是0.00001
 

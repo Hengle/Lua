@@ -1,15 +1,10 @@
 
+require "bit"
+a = 2
 
-a = false
+b = 1
+b_1 = bit.rshift(a,0)
 
-b = 1>5
+c = bit.band(b,b_1)
 
-c = 0
-
-d = a or b or c
-
-print(a or b or c)
-
-print(d)
-
-print(false)
+print(a.."  /  ".. b .."  /  ".. b_1 .."  /  "..  c .."  /  ")
