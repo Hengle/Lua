@@ -1,0 +1,59 @@
+
+
+ NGUI的DrawCall
+
+----------------------------------------------资料1----------------------------------------------------------
+https://blog.csdn.net/sgnyyy/article/details/39666107
+
+ 1 UIPanel 工作流程
+
+ 1.1 新增的drawcall主要是通过缓存widgets[i-1]的mterial,texture,shader与widgets[i]进行对比，
+      如果使用相同的material，texture，shader则共用同一个drawcall，否则新创建一个drawcall，
+      其中都是在遍历widgets进行操作
+ 
+ 2 如何生成drawcall
+
+ 2.1 widgets的生成和作用：uipanel与uiwidget的对应关系是一对多的，而uisprite,ui2dsprite,uitexuture,uilabel
+      等空间本质上都是uiwidget
+ 
+ 3 widgets的生成和作用
+
+ 3.1 widgets的商城，widgets.add调用有两处：1）改变widget深度时 2）创建UIPanel时
+
+ 4 drawcall的合并
+
+
+----------------------------------------------资料2----------------------------------------------------------
+https://blog.csdn.net/sgnyyy/article/details/39666107
+
+1 mipmap: 类似LOD，LOD是针对的模型，mipmap是贴图；ui是没有深度，所有图集不能勾选这个
+
+2 模型的贴图，可以设置，把一个图设置了8个精度的值，根据摄像机远近自动选用
+
+3 贴图同样也不能勾选read/write
+
+4  图片格式: NGUI生成的图集的图片格式是PNG，但是无论是什么格式的图片，Unity都会自己搞一套格式，
+   并且打包的时候也不会用你文件夹下图片的格式，而是Unity自己的格式。如果你用UITexture你可以真对每
+   一张图来修改它的格式，比如一些颜色数比较少的图片，你可以直接用16bit，如果你的图片没有用到透明，
+   你可以用pvr或者etc，这样你的图片会更小。可是UISprite就不行，只要其中有一张小图用了透明，你就得用RGBA32，
+   不然UI就会很难看，你可以自己试试。
+
+5  除了UITexture 和 Atlas的图片没办法以外（因为必须有透明），不是建议是必须，你的贴图无论如何都必须是2的幂次方。
+    因为只有2的幂次方图片 并且没有透明通道才会被压缩，IOS会压缩成pvr格式，Android会压缩成ETC格式，压缩以后图片会小很多的，好几倍的小。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
