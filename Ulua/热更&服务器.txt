@@ -1,0 +1,21 @@
+
+ -------------------------------------Q&A-----------------------------------------------
+1 Q:ulua点击Build windows Resorce报错 
+1 A:unity搜索 ToLuaExport这个脚本，里边有个memberfilter的公开静态方法，在里边把你缺的错误提示填进去，"Light.lightmappingMode","Light.lightmapBakeType","MonoBehaviour.runInEditMode"；然后回
+到unity清除wrap再重新生成一次。(unity 2018.2.0,会有报错需要手动调整 -- PhysicsWrap.cs)
+
+2 Q:如何下载并加载ab
+   A:https://www.cnblogs.com/kanekiken/p/7851685.html-- 4种加载方式
+
+
+
+--------------------------------------Ulua----------------------------------------------
+1 目录结构
+
+2 ide:IntelliJ IDEA 2017.2.5 / LuaStudio
+
+3 动态更新的资源:StreamingAssets
+
+4 unity的生成的包装类:uLua / Source / LuaWrap
+
+5 

@@ -1,0 +1,5 @@
+
+
+1 easymovietexutre:不预加载
+
+2 使用原理是:ffmpeg教程
