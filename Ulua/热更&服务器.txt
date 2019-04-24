@@ -86,8 +86,93 @@
 
 
 
+--------------------------------------Ulua----------------------------------------------
+1 打包的依赖关系: 
+BuildPipeline.PushAssetDependencies()：依赖资源压栈；
+BuildPipeline.PopAssetDependencies()：依赖资源出栈。
+https://www.cnblogs.com/sifenkesi/p/3915477.html
+
+2 public enum BuildAssetBundleOptions
+    {
+        //
+        // 摘要:
+        //     Build assetBundle without any special option.
+        None = 0,
+        //
+        // 摘要:
+        //     Don't compress the data when creating the asset bundle.
+        // 对ab不进行数据压缩。输入的ab包会很大，不过输入和加载会很快
+        UncompressedAssetBundle = 1,
+        //
+        // 摘要:
+        //     Includes all dependencies.
+        // 包含所有依赖关系
+        CollectDependencies = 2,
+        //
+        // 摘要:
+        //     Forces inclusion of the entire asset.
+        // 强制包括整个资源
+        CompleteAssets = 4,
+        //
+        // 摘要:
+        //     Do not include type information within the AssetBundle.
+        // 不包含类型信息。发布web平台时，不能使用该选项
+        DisableWriteTypeTree = 8,
+        //
+        // 摘要:
+        //     Builds an asset bundle using a hash for the id of the object stored in the asset
+        //     bundle.
+        // 使每个object具有唯一不变的hashID, 可用于增量式发布AssetBundle
+        DeterministicAssetBundle = 16,
+        //
+        // 摘要:
+        //     Force rebuild the assetBundles.
+        // 强制重新build所有ab
+        ForceRebuildAssetBundle = 32,
+        //
+        // 摘要:
+        //     Ignore the type tree changes when doing the incremental build check.
+        // 忽略typetree的变化，不能与DisableWriteTypeTree同时使用
+        IgnoreTypeTreeChanges = 64,
+        //
+        // 摘要:
+        //     Append the hash to the assetBundle name.
+        // 附加hash到assetbundle名字中
+        AppendHashToAssetBundleName = 128,
+        //
+        // 摘要:
+        //     Use chunk-based LZ4 compression when creating the AssetBundle.
+        // 使用lz4的格式压缩ab,ab会在加载资源时才进行解压。默认的压缩格式是lzma,它会使用ab在下立即解压。
+        ChunkBasedCompression = 256,
+        //
+        // 摘要:
+        //     Do not allow the build to succeed if any errors are reporting during it.
+        // 使用严格模式build ab, 有任何非致命的error都不会build成功.
+        StrictMode = 512,
+        //
+        // 摘要:
+        //     Do a dry run build.
+        DryRunBuild = 1024,
+        //
+        // 摘要:
+        //     Disables Asset Bundle LoadAsset by file name.
+        // 不使用FileName来加载ab
+        DisableLoadAssetByFileName = 4096,
+        //
+        // 摘要:
+        //     Disables Asset Bundle LoadAsset by file name with extension.
+        // 不使用带后缀的文件名来加载ab
+        DisableLoadAssetByFileNameWithExtension = 8192
+｝
 
 
+3 Window - > Resource Builder -> XYJ的打包
+
+4 LuaFramework/Lua/Main.lua fw启动的文件
+
+5 热更新配置: 
+1)public const bool UpdateMode = true;
+2)public const string WebUrl = "http://localhost:6688/"; 
 
 
 
