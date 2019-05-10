@@ -78,7 +78,6 @@ public class Turn : MonoBehaviour,IDragHandler,IBeginDragHandler,IEndDragHandler
         if (OnTurn != null)
         {
             OnTurn(dir);
-
         }
 
         if (OnAngle != null)
