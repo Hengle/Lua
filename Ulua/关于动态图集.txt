@@ -1,0 +1,4 @@
+图中UIpanel引用了Atlas_Item_UI。根据uipanel的打包机制，uiAtlas会被断开引用，引用关系被保存在UIAtlasInfo中，如下图。
+被断开的atlas，由于依赖关系已不存在，动态加载时就无法正确找到引用。
+但是在uipanel中，由于保存了依赖，可以被正确加载。
+如果一定要在编辑uipanel的时候预览图标，需要使用 RawUI下的资源。该目录在打包机上打包时，会被删除，因此不会产生冗余
