@@ -11,6 +11,7 @@ c = bit.band(b,b_1)
 print(a.."  /  ".. b .."  /  ".. b_1 .."  /  "..  c .."  /  ")
 --]]
 
+--[[
 c = 10.12345
 local a , b = math.modf(c);
 
@@ -22,3 +23,7 @@ local d = b *f
 local d1,d2 = math.modf(d)
 local r = a .. "." .. d1
 print(d1,"---",d2,"---",r)
+--]]
+
+local c = math.mod(20,101)
+print(c)

@@ -1,0 +1,81 @@
+
+------------------------MySQL----------------------
+
+1 开源关系型数据库，不需要付费并开源，使用社区足够
+
+2 port:3306 ; 123456 密码；Windows Services Name:MySQL80
+
+3 win+R:services.msc 打开mysql服务
+
+4 目录介绍
+bin：可执行文件
+data:数据文件，数据库文件索引文件等
+include:头文件
+lib：库
+share:错误消息和字符集
+
+5 创建mysql的默认配置，my.ini,需要制定存储的data位置且不在安装目录内
+
+6  mysqld --initialize --console
+2019-05-15T11:55:21.137522Z 0 [System] [MY-013169] [Server] C:\Program Files\MySQL\MySQL Server 8.0\bin\mysqld.exe (mysqld 8.0.16) initializing of server in progress as process 8508
+2019-05-15T11:55:21.138447Z 0 [Warning] [MY-013242] [Server] --character-set-server: 'utf8' is currently an alias for the character set UTF8MB3, but will be an alias for UTF8MB4 in a future release. Please consider using UTF8MB4 in order to be unambiguous.
+2019-05-15T11:55:26.376800Z 5 [Note] [MY-010454] [Server] A temporary password is generated for root@localhost: 4cqyPrkwzM=O
+2019-05-15T11:55:27.558692Z 0 [System] [MY-013170] [Server] C:\Program Files\MySQL\MySQL Server 8.0\bin\mysqld.exe (mysqld 8.0.16) initializing of server has completed
+
+6 初始化数据库:mysqld --initialize --console
+
+7 :修改秘密:mysql -u root -p 
+
+8 默认MySQL用户：
+  select user,host,authentication_string from mysql.user;
+
+9 mysql: cmd-> 
+   1）mysql -V :版本号 2）mysql -uroot -p -P3306 -h127.0.0.1
+
+10：登录：mysql -uroot -p -P3306 -h127.0.0.1（用户名，输入密码，端口，服务器名）
+
+11：退出 1）mysql>exit; 2)mysql>quit; 3)mysql>\q;
+
+12:   windows清屏：cls
+
+13:   修改mysql提示符: mysql -uroot -p --prompt + 替换的名字
+
+14:   1) select version(); -- 版本
+        2) select now(); -- 当前时间
+        3) select user(); -- 当前用户
+
+15：语句规范: 1) 关键字与函数名称全部大写 2）数据库名称，表名称，字段名称都小写 3）SQL语句必须分号结尾
+
+16：mysql自带四个数据库
+
+17: CREATE DATABASE IF NOT EXIST t2 CHARACTER SET gbk -- 创建gbk格式的数据库
+
+18：SHOW CREATE DATABASE t2
+
+19: 修改编码方式:ALTER {DATABASE | SCHEMA} [db_name]
+
+20: ALTER DATABASE t2 CHARACTER SET = utf8
+
+
+------------------------数据类型数据表----------------------
+1 整形:TINYINY,SMALLINT,MEDIUMINT,INT,BIGINT
+
+2 浮点:FLOAT,DOUBLE
+
+3 日期:YEAR,TIME,DATE,DATETIME,TIMESTAMP(时间戳1970-1-1 0点 ---2037年的一个值)
+
+4 字符型:CHAR(255),VACHAR(65535),TINYTEXT,TEXT(<2^16),MEDIUMTEXT,LONGTEXT,ENUM(65535),SET(64个成员)
+
+5  数据表:行（记录），列（字段）
+
+6  打开数据库：USE + 数据库名称
+
+7  （2-6创建数据表）
+
+
+
+
+
+
+
+

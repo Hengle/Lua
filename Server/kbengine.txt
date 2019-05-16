@@ -4,32 +4,9 @@
 2 python3.7.3
 
 
-------------------------MySQL----------------------
 
-1 开源关系型数据库，不需要付费并开源，使用社区足够
 
-2 port:3306 ; 123456 密码；Windows Services Name:MySQL80
 
-3 win+R:services.msc 打开mysql服务
 
-4 目录介绍
-bin：可执行文件
-data:数据文件，数据库文件索引文件等
-include:头文件
-lib：库
-share:错误消息和字符集
 
-5 创建mysql的默认配置，my.ini,需要制定存储的data位置且不在安装目录内
 
-6  mysqld --initialize --console
-2019-05-15T11:55:21.137522Z 0 [System] [MY-013169] [Server] C:\Program Files\MySQL\MySQL Server 8.0\bin\mysqld.exe (mysqld 8.0.16) initializing of server in progress as process 8508
-2019-05-15T11:55:21.138447Z 0 [Warning] [MY-013242] [Server] --character-set-server: 'utf8' is currently an alias for the character set UTF8MB3, but will be an alias for UTF8MB4 in a future release. Please consider using UTF8MB4 in order to be unambiguous.
-2019-05-15T11:55:26.376800Z 5 [Note] [MY-010454] [Server] A temporary password is generated for root@localhost: 4cqyPrkwzM=O
-2019-05-15T11:55:27.558692Z 0 [System] [MY-013170] [Server] C:\Program Files\MySQL\MySQL Server 8.0\bin\mysqld.exe (mysqld 8.0.16) initializing of server has completed
-
-6 初始化数据库:mysqld --initialize --console
-
-7 :修改秘密:mysql -u root -p 
-
-8 默认MySQL用户：
-  select user,host,authentication_string from mysql.user;
