@@ -1,4 +1,15 @@
 
+------------------------常用----------------------
+1 mysql -uroot -p -P3306 -h127.0.0.1
+2 SHOW DATABASES/SHOW TABLES/ SELECT * FROM tb1 / SHOW COLUMNS FROM tb1
+3 SHOW CREATE TABLE tb1 -- 查看引擎是否是innodb，默认编码是否是utf8
+4 SHOW INDEXES FROM tb1 \G-- 可查看唯一约束的名字(\G以网格的形式查看)
+
+------------------------常用报错----------------------
+
+1 no database seleceted:没有选择数据库；--> use + 数据库
+
+
 ---------------------（一）---MySQL----------------------
 
 1 开源关系型数据库，不需要付费并开源，使用社区足够
@@ -74,7 +85,7 @@ share:错误消息和字符集
 
 8  CREATE TABLE tb1(username VARCHAR(20),age TINYINT UNSIGNED,salary FLOAT(8,2) UNSIGNED);
 
-9  查看数据表:SHOW TABLES
+9  查看数据表:SHOW TABLES 
 
 10 insert
 1）全赋值:INSERT tb1 VALUES('Tom',20,222222.222);
@@ -157,10 +168,30 @@ FOREIGN KEY (pid) REFERENCES provinces (id));
 
 4 一般不用这种无理的外键约束，实际上只用逻辑外键
 
-5 
+5 CREATE TABLE user2(username VARCHAR(10) NOT NULL,pid SMALLINT UNSIGNED);
+1) alter table user2 add id smallint unsigned;
+2) alter table user2 add constraint PK_user2_id PRIMARY KEY(id);(PK是主键的意思)
+3) alter table user2 add foreign key (pid) references provinces (id);
+(查看外键约束：show create table user2)
  
+6 删除主键约束，唯一约束等等
+1) alter table user2 drop PRIMARY KEY; -- 删除主键约束
+2) SHOW INDEXES FROM user2 -- 查看所有唯一约束的名字
+3) alter table user2 drop foreign key user2_ibfk_1;
 
+7 修改数据表 modify(定义);change (定义和名称)
+1）alter table user2 modify id smallint unsigned not null first;
+2)  alter table user2 change id iddd smallint unsigned not null first;
 
+8 修改数据表的名字:alter table / rename
+1) alter table user2 rename users3;
+2) rename table users3 to user2;
+
+9 少使用更改表名和列名；比如存储过程引用过，最好不要修改
+
+----------------------（四）-----------------------
+
+1 
 
 
 
