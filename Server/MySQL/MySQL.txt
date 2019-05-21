@@ -33,6 +33,8 @@ share:错误消息和字符集
 2019-05-15T11:55:26.376800Z 5 [Note] [MY-010454] [Server] A temporary password is generated for root@localhost: 4cqyPrkwzM=O
 2019-05-15T11:55:27.558692Z 0 [System] [MY-013170] [Server] C:\Program Files\MySQL\MySQL Server 8.0\bin\mysqld.exe (mysqld 8.0.16) initializing of server has completed
 
+6 服务的命令行:net start mysql (开服务) / net stop mysql (关服务)
+
 6 初始化数据库:mysqld --initialize --console
 
 7 :修改秘密:mysql -u root -p 
