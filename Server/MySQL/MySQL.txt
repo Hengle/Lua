@@ -1,9 +1,13 @@
 
 ------------------------常用----------------------
 1 mysql -uroot -p -P3306 -h127.0.0.1
-2 SHOW DATABASES/SHOW TABLES/ SELECT * FROM tb1 / SHOW COLUMNS FROM tb1
+2 SHOW DATABASES/SHOW TABLES/ 
+   SELECT * FROM tb1（所有字段值） / SHOW COLUMNS FROM tb1（所有字段属性）
 3 SHOW CREATE TABLE tb1 -- 查看引擎是否是innodb，默认编码是否是utf8
 4 SHOW INDEXES FROM tb1 \G-- 可查看唯一约束的名字(\G以网格的形式查看)
+5 cmd - services.msc --查看服务的名字
+6 关闭和打开服务 -- net start/stop + 服务名字
+
 
 ------------------------常用报错----------------------
 
@@ -193,7 +197,13 @@ FOREIGN KEY (pid) REFERENCES provinces (id));
 
 ----------------------（四）-----------------------
 
-1 
+1 update / insert / delete
+
+2 select
+1) 使用别名的时候建议使用as关键字
+2) select sex from users group by sex
+3) select * from users LIMIT 2; -- 返回两条（select是从0开始编号）
+4）
 
 
 
