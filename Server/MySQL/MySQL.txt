@@ -203,8 +203,16 @@ FOREIGN KEY (pid) REFERENCES provinces (id));
 1) 使用别名的时候建议使用as关键字
 2) select sex from users group by sex
 3) select * from users LIMIT 2; -- 返回两条（select是从0开始编号）
-4）
+4）insert/update/delete/select
 
+----------------------（五）-----------------------
+
+1 子查询和连接
+2 set names gbk: 显示用gbk显示不影响数据库存储的值
+3 ANY/SOME/ALL
+4 多表的更新
+5 update tb1 inner join  tb2 on 字段1 set 字段1 = 字段2（第二张表的字段）
+6 连接
 
 
 
