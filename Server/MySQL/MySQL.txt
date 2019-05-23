@@ -7,6 +7,8 @@
 4 SHOW INDEXES FROM tb1 \G-- 可查看唯一约束的名字(\G以网格的形式查看)
 5 cmd - services.msc --查看服务的名字
 6 关闭和打开服务 -- net start/stop + 服务名字
+7 set names gbk; -- 只影响客户端显示的代码不影响服务器，如果是汉子显示需要设置为gbk
+8 SET GLOBAL log_bin_trust_function_creators = 1; -- 8.0创建函数需要设置这个全局变量
 
 
 ------------------------常用报错----------------------
@@ -206,14 +208,56 @@ FOREIGN KEY (pid) REFERENCES provinces (id));
 4）insert/update/delete/select
 
 ----------------------（五）-----------------------
-
-1 子查询和连接
+1 子查询（必须出现在小括号内）和连接
 2 set names gbk: 显示用gbk显示不影响数据库存储的值
 3 ANY/SOME/ALL
 4 多表的更新
 5 update tb1 inner join  tb2 on 字段1 set 字段1 = 字段2（第二张表的字段）
 6 连接
+7 多表删除 delete t1 from tdb_goods AS t1 left join (select goods_id,goods_name,tdb_goods GROUP BY goods_name HAVING count(goods_name >=2) AS t2 ON t1.goods_name = t2.goods_name where t1.goods>t2.goods_id;
 
+----------------------（六）-----------------------
+1 字符函数
+2 select concat('imoc','-','mysl')
+3 concat_ws:至少三个参数，第一参数是分隔符
+4 format（12345.32，1） -- 12345.3 保留小数点后两位
+5 LOWER() / UPPER() 大小写转换；select upper（‘eee’） -- EEE
+6 LEFT() / RIGHT(): 从左还是右的截取；
+7 LTRIM()/RTRIM() : 删除前导空格 / 删除后续空格
+8 [NOT] LIKE：模式匹配
+9 SUBSTRING():起始位置参数是负数则倒数 / REPLACE()
+10 select 'mysql' like 'm%' / select * from test where first_name like'%o%' :匹配有o名字的
+11 select * from test where first_name like'%1%%' escape '1' :1后面的百分号不做匹配，即是包含百分号的
+12 说明:%:代表任意个字符 / _(下划线)代表任意一个字符
+13 POWER()幂运算 / ROUND()四舍五入 / TRUNCATE() 数字截取 ：select truncate(125.85,1） -- 125.8
+14 datediff（）/ 日期差值
+15 date_format: select date_format('2014-3-12','%m/%d/%Y') -- 03/02/2014 --转换显示格式
+
+
+----------------------（七）-----------------------
+1 select date_format(now(),'%Y年%M月%D日-%H点:%I分:%S秒');
+2 CREATE FUNCTION f1() RETURNS VARCHAR(30) 
+   RETURN date_format(now(),'%Y年%M月%D日-%H点:%I分:%S秒');
+(在8.0报错：创建一个子程序的时候必须要么声明它是确定性的，要么它不改变数据)
+3 修正：信任子程序的创建者，禁止创建、修改子程序时对SUPER权限的要求
+1）SET GLOBAL log_bin_trust_function_creators = 1;
+     在MySQL配置文件my.ini或my.cnf中的[mysqld]段上加log-bin-trust-function-creators=1
+4  DELIMITER //  （修改默认的分隔符delimiter + 符号）-- 因为所有的命令需要两条斜线来结束，当在函数里写多行语句的时候
+5  begin end；例:create function xx(xx 类型) returns 类型 begin ... end //
+(注意：DELIMITER 必须大写)
+
+ ----------------------（八）-----------------------
+   
+1 存储过程：sql控制的预编译，效率很高（因为每一次的sql都会语法分析和编译），大大大于sql语句；可返回多个值；
+2 存储过程:  减小了网络流量，根据http交给服务器的数据量会减小，因为只有参数
+3 过程体:任意合法的sql语句（不可能用存储过程来创建数据表和数据库）
+4 超过两条语句，需要使用begin...end
+5 create procedure sp1() select version()
+6 call sp1; call sp1();
+7 create procedure remove_tb3byid(IN id INT UNSIGNED)
+  begin
+  delete from tb3 where id = id ; --(这个分号必须加标准这个语句结束)
+  end
 
 
 
