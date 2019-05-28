@@ -1,0 +1,4 @@
+
+1 TexTransferSpriteEditor.cs  右键 - tex转换为sprite，包括绑定core也一同修改
+
+2 AutoCombineDrawCallEditor.cs 右键 - 合并drawcall
