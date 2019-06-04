@@ -1,4 +1,9 @@
 
+本地账户是:root
+密码是:123456
+
+命令行是:select USER()
+
 ------------------------常用----------------------
 1 mysql -uroot -p -P3306 -h127.0.0.1
 2 SHOW DATABASES/SHOW TABLES/ 
