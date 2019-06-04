@@ -1,0 +1,6 @@
+
+1 UIInvisibleWidget + UIInVisibleSort.cs + UIParticalClip 特效节点
+
+2 shader: 1) UIParticleClip.shader需要和uiparticleClip.cs一起使用，裁剪区域的材质属性是uiparticleclip.cs内根据panel计算出来的
+
+               2）ParticleAdd.shader就是没有裁剪的粒子shader
