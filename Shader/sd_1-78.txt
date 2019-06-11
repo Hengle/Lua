@@ -1,10 +1,24 @@
 
------------------1----------------
-GPU：并行计算
+-----------------1简介----------------
+GPU：并行计算，无法拥有cpu强大的逻辑运算能力
 CPU:   cache,logic,处理单元比GPU少
+unity中有三种shader：
+surface shader(unity的一种包装最后还是会生成vertex and fragment shader)；
+vertex and fragment shader(最主要的)；
+fixed function shader（固定管线的shader，比如简单的光照和采样）
 
+-----------------4基本结构----------------
+shader "name"{
+ [Properties]
+ SubShaders
+ [FallBack]
+}
 
-
+ SubShaders -- 有且必须有一个，显卡每一次只会选择一个subshader去渲染；
+                   如果当前硬件不能支持第一个subshader则依次往下选择；若subshader都不支持
+                   则就会fallback回滚到系统的一个默认的shader
+ 
+ 
 
 
 -----------------38----------------
@@ -31,3 +45,4 @@ CPU:   cache,logic,处理单元比GPU少
 -----------------39----------------
 
 
+                                                                     
