@@ -9,9 +9,9 @@ fixed function shader（固定管线的shader，比如简单的光照和采样）
 
 -----------------4基本结构----------------
 shader "name"{
- [Properties]
- SubShaders
- [FallBack]
+ [Properties] -- 可省略
+ SubShaders --至少1个
+ [FallBack] -- 可省略
 }
 
  SubShaders -- 有且必须有一个，显卡每一次只会选择一个subshader去渲染；
@@ -19,6 +19,26 @@ shader "name"{
                    则就会fallback回滚到系统的一个默认的shader
  
  
+-----------------5-6固定管线----------------
+
+1 fixed function shader: 固定功能的，硬件能执行的，速度最快，功能简单
+
+2 properties，material，lighting，settexture，pass（通道）
+
+3 没有大小写区分，且不能用分号
+
+4 blending：是用原与目标相混合，（1-源的alpha值）
+
+-----------------7-8surface----------------
+1 surfaceoutput
+
+2 input
+
+3 lighting
+
+4 shadow
+
+5 surface shader 就不需要添加pass通道
 
 
 -----------------38----------------
