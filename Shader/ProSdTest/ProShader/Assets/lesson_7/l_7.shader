@@ -1,4 +1,4 @@
-﻿Shader "Custom/l_7" {
+﻿Shader "Sbin/l_7" {
 	Properties {
 		_Color ("Color", Color) = (1,1,1,1)
 		_MainTex ("Albedo (RGB)", 2D) = "white" {}

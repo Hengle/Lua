@@ -1,4 +1,4 @@
-﻿Shader "Custom/ff2" {
+﻿Shader "Sbin/ff2" {
 	properties
 	{
 		_Color("Main Color",color) = (1,1,1,1)
