@@ -38,7 +38,8 @@ shader "name"{
 
 4 shadow
 
-5 surface shader 就不需要添加pass通道
+5 surface shader 就不需要添加pass通道，添加了则会报错
+
 
 
 -----------------38----------------
