@@ -14,6 +14,8 @@ namespace Sd
     {
         Triangle t;
 
+        int degress;
+
         public Form1()
         {
             InitializeComponent();
@@ -31,6 +33,16 @@ namespace Sd
         {
             e.Graphics.TranslateTransform(150,110);
             t.Draw(e.Graphics);
+        }
+
+        private void tick(object sender, EventArgs e)
+        {
+            //degress++;
+            //t.Rotate(degress);
+            t.Rotate(1);
+
+            //重绘
+            this.Invalidate();
         }
     }
 }
