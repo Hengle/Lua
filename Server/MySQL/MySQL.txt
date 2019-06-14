@@ -4,6 +4,16 @@
 
 命令行是:select USER()
 
+------------------------安装mysql----------------------
+https://www.cnblogs.com/reyinever/p/8551977.html
+
+1  下载python3.7.3
+2  点击安装选择customize installation+add phthon3.7 to path
+3  安装mysql8.0
+4  services.msc 打开服务找到mysql开启
+ 
+
+
 ------------------------常用----------------------
 1 mysql -uroot -p -P3306 -h127.0.0.1
 2 SHOW DATABASES/SHOW TABLES/ 
