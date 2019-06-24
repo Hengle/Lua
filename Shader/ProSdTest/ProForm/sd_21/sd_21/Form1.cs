@@ -16,7 +16,9 @@ namespace sd_21
         Triangle3D t;
 
         Matrix4x4 m_scale;//缩放
-        Matrix4x4 m_rotation;//旋转
+        Matrix4x4 m_rotationX;//旋转
+        Matrix4x4 m_rotationY;//旋转
+        Matrix4x4 m_rotationZ;//旋转
         Matrix4x4 m_view;//平移
         Matrix4x4 m_projection;//投影矩阵
 
@@ -39,10 +41,12 @@ namespace sd_21
             m_view[3, 3] = 1;
             m_view[4, 3] = 199; //z平移
             m_view[4, 4] = 1;
- 
+
 
             //旋转
-            m_rotation = new Matrix4x4();
+            m_rotationX = new Matrix4x4();
+            m_rotationY = new Matrix4x4();
+            m_rotationZ = new Matrix4x4();
 
 
             //投影
@@ -56,9 +60,9 @@ namespace sd_21
         private void Form1_Load(object sender, EventArgs e)
         {
             //只有最后是1是点跟矩阵相乘才有意义
-            Vector4 a = new Vector4(0, -0.5, 0, 1); 
-            Vector4 b = new Vector4(0.5, 0.5, 0, 1);
-            Vector4 c = new Vector4(-0.5, 0.5, 0, 1);
+            Vector4 a = new Vector4(0, 0.5, 0, 1); 
+            Vector4 b = new Vector4(0.5, -0.5, 0, 1);
+            Vector4 c = new Vector4(-0.5, -0.5, 0, 1);
             t = new Triangle3D(a,b,c);
 
             //缩放
@@ -76,22 +80,60 @@ namespace sd_21
             a += 2;
             
             //弧度
-            double angle = a / 360.0 * Math.PI; 
-            m_rotation[1, 1] = Math.Cos(angle);
-            m_rotation[1, 3] = Math.Sin(angle);
-            m_rotation[2, 2] = 1;
-            m_rotation[3, 1] = -Math.Sin(angle);
-            m_rotation[3, 3] = Math.Cos(angle);
-            m_rotation[4, 4] = 1;
+            double angle = a / 360.0 * Math.PI;
+
+            //X(这个轴只适用左手坐标系即y向上的坐标系)
+            m_rotationX[1, 1] = 1;
+            m_rotationX[2, 2] = Math.Cos(angle);
+            m_rotationX[2, 3] = Math.Sin(angle);
+            m_rotationX[3, 2] = -Math.Sin(angle);
+            m_rotationX[3, 3] = Math.Cos(angle);
+            m_rotationX[4, 4] = 1;
+
+            //Y
+            m_rotationY[1, 1] = Math.Cos(angle);
+            m_rotationY[1, 3] = Math.Sin(angle);
+            m_rotationY[2, 2] = 1;
+            m_rotationY[3, 1] = -Math.Sin(angle);
+            m_rotationY[3, 3] = Math.Cos(angle);
+            m_rotationY[4, 4] = 1;
+
+            //Z
+            m_rotationZ[1, 1] = Math.Cos(angle);
+            m_rotationZ[1, 2] = Math.Sin(angle);
+            m_rotationZ[2, 1] = -Math.Sin(angle);
+            m_rotationZ[2, 2] = Math.Cos(angle);      
+            m_rotationZ[4, 4] = 1;
+
+            
+
+            if(this.x.Checked)
+            {
+                Matrix4x4 tx = m_rotationX.Transpose();
+                m_rotationX = m_rotationX.Mul(tx);
+            }
+
+            if (this.y.Checked)
+            {
+                Matrix4x4 ty = m_rotationY.Transpose();
+                m_rotationY = m_rotationY.Mul(ty);
+            }
+
+            if (this.z.Checked)
+            {
+                Matrix4x4 tz = m_rotationZ.Transpose();
+                m_rotationZ = m_rotationZ.Mul(tz);
+            }
+
+            Matrix4x4 all = m_rotationX.Mul(m_rotationY.Mul(m_rotationZ));
 
             //联合矩阵
-            Matrix4x4 m = m_scale.Mul(m_rotation);
+            Matrix4x4 m = m_scale.Mul(all);
             m = m.Mul(m_view);
             m = m.Mul(m_projection);
 
 
             //缩放
-            //t.Transform(m_scale);
             t.Transform(m);
             this.Invalidate();
         }

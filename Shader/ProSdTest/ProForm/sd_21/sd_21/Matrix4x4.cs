@@ -50,7 +50,7 @@ namespace sd_21
             return newM;
         }
 
-        //
+        //乘
         public Vector4 Mul(Vector4 v)
         {
             Vector4 newV = new Vector4();
@@ -62,5 +62,19 @@ namespace sd_21
             return newV;
         }
 
+        //转置
+        public Matrix4x4 Transpose()
+        {
+            Matrix4x4 t = new Matrix4x4();
+            for(int i=1;i<=4;i++)
+            {
+                for(int j=1;j<=4;j++)
+                {
+                    t[i, j] = this[j, i];
+                }
+            }
+
+            return t;
+        }
     }
 }
