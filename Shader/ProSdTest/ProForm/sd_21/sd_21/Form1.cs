@@ -22,6 +22,8 @@ namespace sd_21
         Matrix4x4 m_view;//平移
         Matrix4x4 m_projection;//投影矩阵
 
+        Cube cube;
+
         public Form1()
         {
             InitializeComponent();
@@ -55,6 +57,9 @@ namespace sd_21
             m_projection[2, 2] = 1;
             m_projection[3, 3] = 1;
             m_projection[3, 4] = 1.0 / 199; //投影到小孔的距离
+
+            //cube
+            cube = new Cube();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -72,7 +77,9 @@ namespace sd_21
 
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
-            t.Draw(e.Graphics);
+            //t.Draw(e.Graphics);
+
+            cube.Draw(e.Graphics);
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -129,12 +136,19 @@ namespace sd_21
 
             //联合矩阵
             Matrix4x4 m = m_scale.Mul(all);
+
+            //计算光
+            //t.CalculateLighting(m,new Vector4(-1,1,-1,0));
+
+            cube.CalculateLighting(m, new Vector4(-1, 1, -1, 0));
+
             m = m.Mul(m_view);
             m = m.Mul(m_projection);
 
-
             //缩放
-            t.Transform(m);
+            //t.Transform(m);
+            cube.Transform(m);
+
             this.Invalidate();
         }
     }
