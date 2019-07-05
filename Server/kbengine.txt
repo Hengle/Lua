@@ -7,15 +7,53 @@
 
 -----------------------------------安装和配置-------------------------------------
 
-1 编译完成 - 点击 new_assets.bat--生成server_assets文件夹-start_server.bat
+1  kbe\src\kbengin.sln -“编译完成”,文件整体大小变成了3g多
 
-2  配置db: 
+2  点击 new_assets.bat--生成server_assets文件夹-start_server.bat
+
+2  配置db：参考3-4配置参数修改
 
 3  kb的配置文件:kbe\res\server\kbengin_defaults.xml
 
 4  搜索dbmgr，修改<auth>用户名和密码,还需要指定端口和ip，localhost和3306
+    （mysql：root / 132456）,<port>3306<port> 数据库的ip和端口需要设置
 
-5    
+5  启动：  server_assets文件夹中点击start_server.bat,九个执行程序启动
+
+-----------------------------------Ball_New-------------------------------------
+
+1 new_assets.bat 新建
+
+
+-----------------------------------Ball_Demo-------------------------------------
+
+1 server_assert 修改为balls_assert , 删除数据库重新让kb生成新的数据库
+
+2 使用ide：vscode，需要装python的智能提示
+2.1） 腾讯软件下载vscode
+2.2） 
+
+3 生成的Client中的kbengine_unity3d_plugins这个是客户端使用的引擎插件代码
+3.1)  \*assets\gensdk.bat 这个批处理是在配置的路径下生成客户端插件代码
+3.2）client.app 需要启动初始化插件
+3.2）参看其中的readme.md为使用手册
+
+
+
+-----------------------------------Ball_Login-------------------------------------
+
+1 kbengine.xml 中修改：登录合法时游戏数据库找不到游戏账号则自动创建，关闭这个，要主动创建，所以设置为false
+
+2 
+
+
+
+
+
+
+
+
+
 
 
 
