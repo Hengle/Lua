@@ -1,0 +1,36 @@
+
+ Loxodon
+
+-------------------------------常用--------------------------------------
+1 laucher:
+
+1) RijndaelCryptograph 内嵌的加密类
+2) BundleManifest 所有ab的信息和互相的依赖关系
+3) IPathInfoParser 解析bundlemanifest的路径类
+4) CustomBundleLoaderBuilder 继承ILoaderBuilder的子类
+5) BundleManager 管理所有ab的类需要manifest信息以及builder参数
+6) BundleResources 存储所有ad的和加载的类
+
+
+2 常用接口
+1）AssetDatabase.GetAllAssetBundleNames() 获取ab全部设定的名字
+2）AssetDatabase.GetUnusedAssetBundleNames() 获取ab没有使用的名字
+ 
+3 除了ab外+lua加密編譯后拷貝到本地並讀取的時候才解密
+
+4 ClearLua: 是清理的_TempDataLua/Lua
+
+5 CopyLua: 把asset外的lua拷贝到_TempDataLua/Lua并以.txt结尾为了用unity的ab打包成一个ab，并记录所有的文件名和md5码，且记录文件名为_files.txt
+
+
+
+-------------------------------example1--------------------------------------
+
+1 
+
+
+
+
+
+
+
