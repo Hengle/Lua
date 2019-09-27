@@ -12,6 +12,13 @@ File·½Ê½µÄ¼ÓÔØµÈµÈ¡¾ÔÚUnity5.6ÒÔÉÏ°æ±¾£¬Çë²»ÒªÊ¹ÓÃWWW¼ÓÔØÆ÷£¬Ëü»á²úÉúÄÚ´æ·åÖµ¡¿¡
 Í¬Ê±ËüÒ²ÈÆ¿ªÁËUnity3DÔçÆÚ°æ±¾µÄÒ»Ð©bug£¬±ÈÈç¶à¸öÐ­³Ì²¢·¢¼ÓÔØÍ¬Ò»¸ö×ÊÔ´£¬ÔÚandroidÏµÍ³»á³ö´í¡£
 ËüµÄÈßÓà·ÖÎöÊÇÍ¨¹ý½â°üAssetBundle½øÐÐµÄ£¬Õâ±ÈÔÚ±à¼­Æ÷Ä£Ê½ÏÂ·ÖÎöµÄÈßÓà¸ü×¼È·¡£
 
+-------------------------------±à¼­Æ÷--------------------------------------
+1 Tool/Loxodon/Simulation mode: ¼ÓÔØÂ·¾¶ÊÇ¼ÓÔØ×ÊÔ´»ò´Óab¼ÓÔØ
+2 Tool/Loxodon/build AssetBundle: ±à¼­Æ÷ui
+3 ¿ÉÑ¡¼ÓÃÜ£¬ºÍÐèÒª¼ÓÃÜµÄab£¨Ö»½¨Òé¼ÓÃÜÃô¸Ð×ÊÔ´£¬ÒòÎª»áÓ°ÏìÐÔÄÜ£©
+4 ClearLua: ÊÇÇåÀíµÄ_TempDataLua/Lua
+5 CopyLua: °ÑassetÍâµÄlua¿½±´µ½_TempDataLua/Lua²¢ÒÔ.txt½áÎ²ÎªÁËÓÃunityµÄab´ò°ü³ÉÒ»¸öab£¬²¢¼ÇÂ¼ËùÓÐµÄÎÄ¼þÃûºÍmd5Âë£¬ÇÒ¼ÇÂ¼ÎÄ¼þÃûÎª_files.txt
+
 
 -------------------------------³£ÓÃ--------------------------------------
 1 laucher:
@@ -30,9 +37,7 @@ File·½Ê½µÄ¼ÓÔØµÈµÈ¡¾ÔÚUnity5.6ÒÔÉÏ°æ±¾£¬Çë²»ÒªÊ¹ÓÃWWW¼ÓÔØÆ÷£¬Ëü»á²úÉúÄÚ´æ·åÖµ¡¿¡
  
 3 ³ýÁËabÍâ+lua¼ÓÃÜ¾Ž×gºó¿½Øµ½±¾µØK×xÈ¡µÄ•rºò²Å½âÃÜ
 
-4 ClearLua: ÊÇÇåÀíµÄ_TempDataLua/Lua
 
-5 CopyLua: °ÑassetÍâµÄlua¿½±´µ½_TempDataLua/Lua²¢ÒÔ.txt½áÎ²ÎªÁËÓÃunityµÄab´ò°ü³ÉÒ»¸öab£¬²¢¼ÇÂ¼ËùÓÐµÄÎÄ¼þÃûºÍmd5Âë£¬ÇÒ¼ÇÂ¼ÎÄ¼þÃûÎª_files.txt
 
 
 

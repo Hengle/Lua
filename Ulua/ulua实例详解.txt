@@ -4,9 +4,20 @@
 
 2 LuaScripteMgr对文件的加载路径是放在 Assets\Lua下面，这个是默认的路径位置，如果要加载绝对位置最好只使用LuaState的Dofile
 
-------------------------环境设置----------------------
 
-0 点击Lua -- Gen Lua Wrap File
+------------------------实用操作----------------------
+
+  1）点击Lua -- Gen Lua Wrap File：生成所有c#的注册类到uLua/Source/LuaWrap
+
+  2)  Lua/Clear LuaBinder File + Wrap Files:清除uLua/Source/LuaWrap文件夹下的文件
+
+  3)  把cs的类注册到luawrap，(1)先在BindLua.cs里注册你的c#的class类，（2）点击1）这个步骤 
+
+    （3）Assets\_TempDataLua\Lua\System\Wrap.lua里把新的类import进去就可以使用了
+
+
+
+------------------------环境设置----------------------
 
 1 运行实例场景需要：Appconst.cs -- DebugMode设置为true,这样才能加载System.global.lua(内有wrap.lua以及unity的注册类)
 
@@ -33,8 +44,7 @@
      System.Type 类－－通过这个类可以访问任何给定数据类型的信息。
      System.Reflection.Assembly类－－它可以用于访问给定程序集的信息，或者把这个程序集加载到程序中。
 
-3 去反射：把所有的c#类的public成员变量、成员函数，都导出到一个相对应的Wrap类中，而这些成员函数通过特殊的标记，
-   映射到lua的虚拟机中，当在lua中调用相对应的函数时候，直接调用影射进去的c# wrap函数，然后再调用到实际的c#类，完成调用过程
+3 去反射：把所有的c#类的public成员变量、成员函数，都导出到一个相对应的Wrap类中，而这些成员函数通过特殊的标记，映射到lua的虚拟机中，当在lua中调用相对应的函数时候，直接调用影射进去的c# wrap函数，然后再调用到实际的c#类，完成调用过程
 
 4 load_xxx、import_type，例子中的这些接口都是反射
 

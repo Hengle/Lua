@@ -28,19 +28,5 @@ d = string.gsub(c,"\\","/")
 d_2 = string.gsub(d,"w4/3","")
 print(d_2)
 --]]
-local a.c = {}
-local a.c.b = 4
 
-print(a.c.b)
-
-
-
-
-
-
-
-
-
-
-
-
+pip install networkx.whl

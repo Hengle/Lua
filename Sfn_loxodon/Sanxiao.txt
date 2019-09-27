@@ -1,0 +1,12 @@
+
+del code info:
+
+1 适配：AspectRatio.cs (ugui有自动适配高宽，ngui不详可用此)
+
+2 Controllers：不是在2d的坐标，而是3d的；把消除和ui的系统特别分离；用空间中的移动可以直接用矩阵(自己在世界坐标和目标在世界坐标形成的一个坐标系，然后用中间的值来进行各种插值*矩阵来移动，3d和2d都通用)
+
+3 Canvas（暂无）
+
+4 public static class ObjectPoolExtensions{} // 全局的类，gameobject把自己传进去作为第一个参数，c#可以用.省去第一个参数直接使用
+
+5 
