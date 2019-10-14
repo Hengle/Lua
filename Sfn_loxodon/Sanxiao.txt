@@ -9,4 +9,6 @@ del code info:
 
 4 public static class ObjectPoolExtensions{} // 全局的类，gameobject把自己传进去作为第一个参数，c#可以用.省去第一个参数直接使用
 
-5 
+5 使用到了hashset来匹配各种预设的消除链，找到所有的预设的链并删除计算结果（level.cs）
+
+6 
