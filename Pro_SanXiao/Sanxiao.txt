@@ -11,4 +11,16 @@
 
 5 使用到了hashset来匹配各种预设的消除链，找到所有的预设的链并删除计算结果（level.cs）
 
-6 
+6 sorting layer / sort order / order in layer / layer 区别
+
+1）layer: 便于相机拣选，在相机的cullmask中可以选择渲染哪些层，不选择的层则不会渲染。
+              还可以用于射线检测对象的拣选，可以指定只对某些层的对象进行射线检测
+
+2）canvas默认是屏幕空间的2D对象，在屏幕空间时仅具有sort order属性，当把它设置为世界空间时，
+     sort order属性消失了，变成另外两个属性: sorting      layer, order in layer。
+
+3）当把画布设置为worldspace后，画布及画布上的UI对象在世界空间默认也是靠Z值来决定渲染顺序的，离相机远的先渲染。当设置了sorting layer后，
+     渲染的次序就由sorting layer来确定了。sorting layer是自定义的标识符，哪个sortinglayer在前（在layer & tags中设置的先后顺序）哪个先渲染。
+     order in layer是个数值，是在同一个sorting layer内的细分，sorting layer相同时order in layer的数值越小越先渲染。
+
+4）
