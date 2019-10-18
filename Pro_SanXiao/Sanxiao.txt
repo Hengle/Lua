@@ -1,5 +1,5 @@
 
-del code info:
+   del code info:
 
 1 适配：AspectRatio.cs (ugui有自动适配高宽，ngui不详可用此)
 
