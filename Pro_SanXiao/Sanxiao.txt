@@ -23,4 +23,4 @@
      渲染的次序就由sorting layer来确定了。sorting layer是自定义的标识符，哪个sortinglayer在前（在layer & tags中设置的先后顺序）哪个先渲染。
      order in layer是个数值，是在同一个sorting layer内的细分，sorting layer相同时order in layer的数值越小越先渲染。
 
-4）
+场景加载: 可以把物件单独出来记录下位置用xml来加载，比加载整个场景比较好，打包也不会冗余
