@@ -1,0 +1,3 @@
+
+更改C:\Windows\System32\drivers\etc\hosts文件
+在文件中追加219.76.4.4 github-cloud.s3.amazonaws.com, 将域名指向该IP即可
