@@ -1,0 +1,8 @@
+
+
+1 cmd/k 打开cmd
+2 lua.exe路径
+3 目标lua路径
+
+cmd /k E:\__GitHub\Lua\__Lua\Lua\LuaDist\bin\lua.exe "E:\__GitHub\Lua\__Lua\Study\_cat.lua"
+  
